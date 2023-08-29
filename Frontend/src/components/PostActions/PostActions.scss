@@ -1,0 +1,29 @@
+@import '../../globale.scss';
+
+.post-actions {
+    width: 100%;
+    padding: 0.5rem;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+
+    .actions {
+        width: 100%;
+        @include flex-center;
+        justify-content: flex-start;
+        gap: 0.7rem;
+        padding-top: 1rem;
+
+        span svg {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        span svg:hover {
+            color: $text-color-3;
+        }
+
+        span:nth-child(3) {
+            margin-right: auto;
+        }
+    }
+}

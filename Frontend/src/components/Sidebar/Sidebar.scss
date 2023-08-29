@@ -1,0 +1,122 @@
+@import '../../globale.scss';
+
+.sidebar {
+    @include flex-center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: fixed;
+    width: 244px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    border: 1px solid $border-color;
+    padding: 2rem 1rem 1rem 1rem;
+
+    img {
+        margin: 0;
+    }
+
+    .logo {
+        @include flex-center;
+        width: 100%;
+        height: 30px;
+        background-image: url('../../images/logo.png');
+        background-repeat: no-repeat;
+        background-position: 0% 50%;
+        text-align: center;
+        font-size: 3rem;
+
+        a>svg {
+            font-size: 1.5rem;
+        }
+
+        >a {
+            display: none;
+        }
+    }
+
+    ul,
+    li,
+    a {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+        margin-top: 1rem;
+
+        ul li {
+            @include flex-center;
+
+            a {
+                padding: 1rem;
+                border-radius: 0.3rem;
+                margin: 0;
+            }
+        }
+
+        ul li:last-child {
+            position: relative;
+            top: 3rem;
+        }
+
+    }
+}
+
+
+
+.shrink {
+    width: 80px;
+    /*padding: 0;*/
+
+    nav {
+        margin-top: 2rem;
+    }
+
+    .logo {
+        background-image: none;
+
+        >a {
+            display: block;
+        }
+    }
+
+    >nav ul li a {
+        width: initial;
+        padding: 1rem;
+        border-radius: 0.3rem;
+        margin: 0;
+    }
+
+    nav ul li a span {
+        display: none;
+    }
+}
+
+@media (max-width:1220px) and (min-width:768px) {
+    .sidebar {
+        width: 80px;
+        /*padding: 0;*/
+
+        .logo {
+            background-image: none;
+
+            >a {
+                display: block;
+            }
+        }
+
+        >nav ul li a {
+            width: initial;
+            padding: 1rem;
+        }
+
+        nav ul li a span {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@import '../../globale.scss';
+
+.feed {
+    @include flex-center;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
+
+    @media (max-width:768px) {
+        padding-top: 65px;
+    }
+}
+
+.feed-posts {
+    width: 100%;
+    max-width: 630px;
+}
+
+.posts {
+    @include flex-center;
+    flex-direction: column;
+}
+
+.friend-suggestions {
+    flex: 0 0 319px;
+
+    p {
+        margin-left: 0.5rem;
+        color: $text-color-1;
+    }
+
+    @media (max-width:1220px) {
+        display: none;
+    }
+}

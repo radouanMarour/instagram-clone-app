@@ -1,0 +1,13 @@
+@import '../../globale.scss';
+
+.follow-btn {
+    background-color: transparent;
+    border: 1px solid transparent;
+    outline: none;
+    color: $btn-color-1;
+    cursor: pointer;
+
+    &:hover {
+        color: $btn-color-2;
+    }
+}

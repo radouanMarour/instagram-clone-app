@@ -1,0 +1,107 @@
+@import '../../globale.scss';
+
+.signup {
+    @include flex-center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 95%;
+    max-width: 350px;
+    border: 1px solid rgb(219, 219, 219);
+    text-align: center;
+    padding: 2rem;
+
+    img {
+        width: 150px;
+        object-fit: cover;
+    }
+
+    p {
+        font-weight: 700;
+        color: $text-color-3;
+    }
+
+    button {
+        background-color: $btn-color-1;
+        border: none;
+        border-radius: 8px;
+        color: #ffffff;
+        outline: none;
+        display: block;
+        padding: 7px 16px !important;
+        cursor: pointer;
+        text-align: center;
+        text-overflow: ellipsis;
+        text-transform: inherit;
+        width: 100%;
+        font-weight: 700;
+
+        &:hover {
+            background-color: $btn-color-2;
+        }
+    }
+
+    .separator {
+        width: 100%;
+        text-align: center;
+        position: relative;
+
+        span {
+            color: $text-color-3;
+
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                height: 1px;
+                width: 40%;
+                position: absolute;
+                top: 50%;
+                background-color: rgb(219, 219, 219);
+            }
+
+            &::after {
+                right: 0;
+            }
+        }
+    }
+
+    form {
+        width: 100%;
+
+        input {
+            width: 100%;
+            border: 1px solid rgb(219, 219, 219);
+            margin: 0.2rem 0;
+            padding: 0.7rem 0.5rem;
+            border-radius: 0.3rem;
+
+            &:focus {
+                border-color: $text-color-3;
+            }
+        }
+
+        p {
+            font-weight: normal;
+            color: $text-color-3;
+            font-size: 0.7rem;
+            margin: 0.7rem 0;
+        }
+
+        button {
+            background-color: rgb(0, 149, 246);
+            font-weight: 700;
+        }
+    }
+
+}
+
+.link {
+    @include flex-center;
+    gap: 1rem;
+    width: 95%;
+    max-width: 350px;
+    border: 1px solid rgb(219, 219, 219);
+    margin: 0.7rem 0;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}

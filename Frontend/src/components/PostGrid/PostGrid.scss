@@ -1,0 +1,19 @@
+.post-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+
+    .post-grid-item {
+        width: 100%;
+        max-width: calc(33.33% - 10px);
+        position: relative;
+
+        >img {
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+
+}

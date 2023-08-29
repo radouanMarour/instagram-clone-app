@@ -1,0 +1,141 @@
+@import '../../globale.scss';
+
+.login {
+    @include flex-center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 95%;
+    max-width: 350px;
+    border: 1px solid rgb(219, 219, 219);
+    text-align: center;
+    padding: 2rem;
+
+    img {
+        width: 150px;
+        object-fit: cover;
+    }
+
+    .separator {
+        width: 100%;
+        text-align: center;
+        position: relative;
+
+        span {
+            color: $text-color-3;
+
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                height: 1px;
+                width: 40%;
+                position: absolute;
+                top: 50%;
+                background-color: rgb(219, 219, 219);
+            }
+
+            &::after {
+                right: 0;
+            }
+        }
+    }
+
+    .facebook-login {
+        @include flex-center;
+        flex-direction: column;
+        gap: 1rem;
+
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: darkslateblue;
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: inherit;
+            font-size: 0.8rem;
+        }
+    }
+
+    form {
+        width: 100%;
+
+        input {
+            width: 100%;
+            border: 1px solid rgb(219, 219, 219);
+            margin: 0.2rem 0;
+            padding: 0.7rem 0.5rem;
+            border-radius: 0.3rem;
+
+            &:focus {
+                border-color: $text-color-3;
+            }
+        }
+
+        p {
+            font-weight: normal;
+            color: $text-color-3;
+            font-size: 0.7rem;
+            margin: 0.7rem 0;
+        }
+
+        button {
+            background-color: rgb(0, 149, 246);
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            outline: none;
+            display: block;
+            padding: 10px 16px !important;
+            margin: 0.7rem 0;
+            cursor: pointer;
+            text-align: center;
+            text-overflow: ellipsis;
+            text-transform: inherit;
+            width: 100%;
+            font-weight: 700;
+
+            &:hover {
+                background-color: $btn-color-2;
+            }
+        }
+    }
+
+}
+
+.link {
+    @include flex-center;
+    gap: 1rem;
+    width: 95%;
+    max-width: 350px;
+    border: 1px solid rgb(219, 219, 219);
+    margin: 0.7rem 0;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+.login-slide {
+    position: relative;
+}
+
+@media (max-width: 900px) {
+    .login-slide {
+        display: none;
+    }
+}
+
+
+.f-img {
+    border: 8px solid black;
+    border-radius: 3rem;
+}
+
+.l-img {
+    position: relative;
+    left: -30%;
+    top: 30%;
+    border: 8px solid black;
+    border-radius: 3rem;
+}

@@ -1,0 +1,41 @@
+@import '../../globale.scss';
+
+.comment {
+    @include flex-center;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 0.5rem;
+
+    img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin: 0.5rem 1rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+
+        .created-at,
+        .likes {
+            font-size: 0.8rem;
+            color: $text-color-3;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .likes {
+            font-weight: 600;
+            margin-left: 0.7rem;
+        }
+    }
+
+    .username {
+        font-weight: 700;
+        color: $text-color-2;
+
+        &:hover {
+            color: $text-color-3;
+        }
+    }
+}

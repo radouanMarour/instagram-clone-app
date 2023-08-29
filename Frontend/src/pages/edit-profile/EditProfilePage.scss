@@ -1,0 +1,145 @@
+@import '../../globale.scss';
+
+.edit-profile {
+    width: 100%;
+
+    .edit-profile-header {
+        width: 100%;
+        @include flex-center;
+        justify-content: flex-start;
+        padding: 1rem 0;
+
+        p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+
+    .edit-profile-content {
+        @include flex-center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 500px;
+        border: 1px solid $border-color;
+
+        .edit-profile-content-left {
+            @include flex-center;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            width: 250px;
+            height: 100%;
+            border-right: 1px solid $border-color;
+
+            >img {
+                width: 100px;
+                object-fit: cover;
+                margin-left: 0.7rem;
+
+                &+a {
+                    border-top: 1px solid $border-color;
+                }
+            }
+
+            >a {
+                display: block;
+                width: 100%;
+                padding: 0.7rem 1.5rem;
+                color: $text-color-2;
+                text-decoration: none;
+            }
+
+            >a.active {
+                border-left: 2px solid $text-color-2;
+                font-weight: bold;
+            }
+
+            @media (max-width:740px) {
+                display: none;
+            }
+        }
+
+        .edit-profile-content-right {
+            padding: 0.5rem;
+            width: 100%;
+            height: 100%;
+
+            >p {
+                font-size: 1.5rem;
+                margin-top: 1rem;
+                margin-left: 1rem;
+            }
+
+            .edit-info {
+                margin: 0 auto;
+                margin-top: 2rem;
+                width: 500px;
+                max-width: 100%;
+
+                .edit-info-photo {
+                    @include flex-center;
+                    justify-content: flex-start;
+                    gap: 1rem;
+
+                    >img {
+                        width: 35px;
+                        height: 35px;
+                        object-fit: cover;
+                    }
+
+                    >p span {
+                        color: $btn-color-1;
+                        font-weight: bold;
+                    }
+                }
+
+                >form {
+                    width: 100%;
+                    padding-top: 1rem;
+
+                    >div {
+                        @include flex-center;
+                        justify-content: flex-start;
+                        width: 100%;
+                        margin: 0.5rem;
+
+                        label {
+                            display: block;
+                            flex: 0.2;
+                        }
+
+                        input,
+                        textarea {
+                            outline: none;
+                            flex: 0.5;
+                            background-color: transparent;
+                            border: 1px solid $border-color;
+                            border-radius: 0.3rem;
+                            padding: 9px 0 7px 8px;
+                        }
+
+                    }
+
+                    >button {
+                        border: none;
+                        outline: none;
+                        display: block;
+                        border-radius: 0.5rem;
+                        background-color: #1877f2;
+                        color: #fff;
+                        padding: 0.3rem 0.7rem;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        position: relative;
+                        left: 21%;
+                        top: 1rem;
+
+                        &:hover {
+                            background-color: $btn-color-1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

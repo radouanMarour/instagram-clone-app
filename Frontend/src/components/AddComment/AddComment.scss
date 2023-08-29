@@ -1,0 +1,27 @@
+@import '../../globale.scss';
+
+form.add-comment-form {
+    width: 100%;
+    @include flex-center;
+    justify-content: space-between;
+    padding: 0.5rem;
+
+    input {
+        width: 90%;
+        background-color: transparent;
+    }
+
+    button {
+        border: none;
+        outline: none;
+        border-radius: 0.3rem;
+        background-color: $btn-color-2;
+        color: #fff;
+        width: 10%;
+        padding: 0.3rem;
+
+        &:hover {
+            background-color: $btn-color-1;
+        }
+    }
+}

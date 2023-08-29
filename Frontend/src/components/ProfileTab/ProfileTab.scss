@@ -1,0 +1,30 @@
+@import '../../globale.scss';
+
+.profile-tab {
+    width: 100%;
+    margin-top: 2.5rem;
+
+    .profile-tab-links {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        border-top: 1px solid $border-color;
+        text-align: center;
+
+        a {
+            @include flex-center;
+            gap: 0.3rem;
+            height: 100%;
+            color: $text-color-3;
+            padding: 1rem 0 !important;
+            width: 100px;
+            font-size: 0.9rem;
+        }
+
+        .active-tab {
+            border-top: 1px solid $text-color-2;
+            color: $text-color-1;
+        }
+    }
+}
