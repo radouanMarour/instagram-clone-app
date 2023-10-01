@@ -1,21 +1,21 @@
 import api from '../client';
 
 export const getUsers = async () => {
-    return await api.get("/users");
+    return await api.get("/api/users");
 }
 
 export const getUser = async (username) => {
-    return await api.get(`/users/${username}`);
+    return await api.get(`/api/users/${username}`);
 
 }
 
 export const searchUsers = async (query) => {
-    return await api.get(`/users/search/?query=${query}`);
+    return await api.get(`/api/users/search/?query=${query}`);
 
 }
 
 export const editUser = async (token, body) => {
-    return await api.put(`/users/me`, body, {
+    return await api.put(`/api/users/me`, body, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -24,7 +24,7 @@ export const editUser = async (token, body) => {
 }
 
 export const followUser = async (token, userId) => {
-    return await api.put(`/users/${userId}/follow`, {}, {
+    return await api.put(`/api/users/${userId}/follow`, {}, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -33,5 +33,5 @@ export const followUser = async (token, userId) => {
 }
 
 export const getNotifications = async (userId) => {
-    return await api.get(`/notifications/${userId}`);
+    return await api.get(`/api/notifications/${userId}`);
 }

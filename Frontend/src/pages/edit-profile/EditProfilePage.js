@@ -26,7 +26,7 @@ function EditProfilePage() {
         formData.append('photo', e.target.files[0]);
         try {
             setUploading(true)
-            const { data: { photo } } = await api.post("http://localhost:5000/api/uploads", formData);
+            const { data: { photo } } = await api.post("/api/uploads", formData);
             if (photo) {
                 const { data } = await editUser(token, { ...user, profilePhoto: photo });
                 dispatch(setUser({ user: data.user, token: user.token }));
