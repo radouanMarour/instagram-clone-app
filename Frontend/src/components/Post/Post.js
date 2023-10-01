@@ -31,7 +31,7 @@ function Post({ post }) {
                     <MdOutlineLinearScale />
                 </button>
             </div>
-            <img className='post-img' src={`http://localhost:5000/uploads/${image}`} alt="" />
+            <img className='post-img' src={`https://insta-clone-dxtn.onrender.com/uploads/${image}`} alt="" />
             <PostActions likes={likes} postId={_id} userId={user._id} />
             <p className='caption' style={style} >{caption}</p>
             {!expanded && <button onClick={() => setExpanded(true)}>More...</button>}<br />

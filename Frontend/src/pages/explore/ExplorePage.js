@@ -25,7 +25,7 @@ function ExplorePage() {
                 posts.map((post, index) => (
                     <div className='explore-post' key={index}>
 
-                        <img src={`http://localhost:5000/uploads/${post.image}`} alt="" />
+                        <img src={`https://insta-clone-dxtn.onrender.com/${post.image}`} alt="" />
 
                         <Link to={`/p/${post._id}`} className='overlay'>
                             <span>

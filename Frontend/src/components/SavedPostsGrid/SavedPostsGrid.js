@@ -26,7 +26,7 @@ function SavedPostsGrid({ userId }) {
                 savedPosts.map((post, index) => (
                     <div className='post-grid-item' key={index}>
 
-                        <img src={`http://localhost:5000/uploads/${post.image}`} alt="" />
+                        <img src={`https://insta-clone-dxtn.onrender.com/${post.image}`} alt="" />
 
                         <Link to={`/p/${post._id}`} className='overlay'>
                             <span>
