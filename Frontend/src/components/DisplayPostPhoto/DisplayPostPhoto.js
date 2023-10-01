@@ -8,7 +8,7 @@ function DisplayPostPhoto() {
 
     return (
         <div className='post-photo'>
-            <img src={`https://insta-clone-dxtn.onrender.com/${postImage}` || defaultPostImg} alt='' />
+            <img src={`https://insta-clone-dxtn.onrender.com/uploads/${postImage}` || defaultPostImg} alt='' />
         </div>
     )
 }
