@@ -7,11 +7,12 @@ import Img1 from '../../images/login-img1.png';
 import Img2 from '../../images/login-img2.png';
 import { login } from '../../apis/authApi';
 import { setUser } from '../../redux/slices/authSlice';
+import { LoginSpinner } from '../../icons';
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [success, setSuccess] = useState("");
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -23,12 +24,14 @@ function LoginPage() {
             password
         }
         try {
-            const data = await login(body);
-            setUser(data);
+            setLoading(true)
+            const { data } = await login(body);
+            dispatch(setUser(data));
             navigate("/");
-            setSuccess("Logged in successfully")
-        } catch (error) {
-            setError(error)
+            setLoading(false)
+        } catch (err) {
+            setError(err.response.data.error);
+            setLoading(false)
         }
     }
 
@@ -42,6 +45,11 @@ function LoginPage() {
                 <section className='login'>
                     <img src={Logo} alt="" />
                     <form onSubmit={handleSubmit}>
+                        {error && <input type="submit"
+                            value={error}
+                            disabled
+                            style={{ color: "red", fontSize: "0.7rem" }}
+                        />}
                         <input
                             type="text"
                             value={email}
@@ -54,13 +62,13 @@ function LoginPage() {
                             placeholder="Password"
                             onChange={e => setPassword(e.target.value)}
                         />
-                        <button type='submit'>Log In</button>
+                        <button type='submit'>{loading ? <LoginSpinner /> : "Log In"}</button>
                     </form>
                     <div className='separator'>
                         <span>OR</span>
                     </div>
                     <div className='facebook-login'>
-                        <button>Log in with Facebook</button>
+                        {/* <button>Log in with Facebook</button> */}
                         <a href="#">Forgotten your password?</a>
                     </div>
                 </section>

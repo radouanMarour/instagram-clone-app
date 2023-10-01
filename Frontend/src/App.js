@@ -5,19 +5,19 @@ import Sidebar from './components/Sidebar/Sidebar';
 import MobileSidebar from './components/MobileSidebar/MobileSidebar';
 import FeedPage from './pages/feed/FeedPage';
 import ExplorePage from './pages/explore/ExplorePage';
-import ReelsPage from './pages/reels/ReelsPage';
+// import ReelsPage from './pages/reels/ReelsPage';
 import ProfilePage from './pages/profile/ProfilePage';
 import EditProfilePage from './pages/edit-profile/EditProfilePage';
-import PostDetailsPage from './pages/post-details/PostDetailsPage';
 import LoginPage from './pages/login/LoginPage';
 import SignupPage from './pages/signup/SignupPage';
+import PostDetailsPage from './pages/post-details/PostDetailsPage';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage';
 
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,7 +32,7 @@ function App() {
 
   }, [])
 
-  if (!true) {
+  if (!isLoggedIn) {
     return (
       <div className="app auth-wrapper">
         <Routes>
@@ -51,13 +51,12 @@ function App() {
         <Routes>
           <Route exact path="/" element={<FeedPage />} />
           <Route path="/explore" element={<ExplorePage />} />
-          <Route path="/reels" element={<ReelsPage />} />
-          <Route exact path="/user-name" element={<ProfilePage />} />
-          <Route path="/user-name/reels" element={<ProfilePage />} />
-          <Route path="/user-name/tagged" element={<ProfilePage />} />
+          {/* <Route path="/reels" element={<ReelsPage />} /> */}
+          <Route exact path="/:username" element={<ProfilePage />} />
+          <Route exact path="/:username/saved" element={<ProfilePage />} />
           <Route path="/accounts/edit" element={<EditProfilePage />} />
-          <Route path="/p/idpost" element={<PostDetailsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route exact path="/p/:postId" element={<PostDetailsPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
     </div>

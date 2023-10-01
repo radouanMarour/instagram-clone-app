@@ -1,0 +1,24 @@
+{
+  "name": "instagram-clone-app",
+  "version": "1.0.0",
+  "description": "this an clone of the actual instagram web application",
+  "main": "./Backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ./Backend && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radouanMarour/instagram-clone-app.git"
+  },
+  "keywords": [
+    "instagram-clone",
+    "mern-stack-app"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radouanMarour/instagram-clone-app/issues"
+  },
+  "homepage": "https://github.com/radouanMarour/instagram-clone-app#readme"
+}

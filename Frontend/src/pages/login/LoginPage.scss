@@ -96,6 +96,7 @@
             text-transform: inherit;
             width: 100%;
             font-weight: 700;
+            @include flex-center;
 
             &:hover {
                 background-color: $btn-color-2;

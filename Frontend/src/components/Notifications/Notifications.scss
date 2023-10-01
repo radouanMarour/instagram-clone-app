@@ -8,4 +8,37 @@
     height: 100vh;
     background-color: #fff;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .15));
+    padding: 0.5rem;
+
+    >h2 {
+        margin: 0.5rem 0;
+    }
+
+    .notification {
+        width: 100%;
+
+        >div {
+            @include flex-center;
+            justify-content: space-between;
+
+            >a {
+                width: 100%;
+                @include flex-center;
+                justify-content: flex-start;
+                gap: 0.3rem;
+                color: inherit;
+                font-size: 0.9rem;
+                padding: 0.3rem 0.5rem;
+                border-radius: 0.5rem;
+
+                &:hover {
+                    background-color: #efefef;
+                }
+
+                >a {
+                    width: initial;
+                }
+            }
+        }
+    }
 }

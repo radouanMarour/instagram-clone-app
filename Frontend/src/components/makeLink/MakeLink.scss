@@ -8,25 +8,20 @@ a.link {
     font-size: 1.2rem;
     border: none;
     padding: 0.5rem;
+
+    >svg {
+        font-size: 1.5rem;
+    }
+
+    &:hover {
+        background-color: whitesmoke;
+    }
 }
 
 @media (max-width: 1220px) {
     a.link {
         justify-content: center;
     }
-}
-
-a.link>svg {
-    font-size: 1.5rem;
-}
-
-a.link:hover {
-    background-color: whitesmoke;
-}
-
-a.active {
-    color: $text-color-1;
-    font-weight: 700;
 }
 
 a.active>svg {

@@ -10,7 +10,7 @@
     background-color: #fff;
     position: fixed;
     left: 1rem;
-    bottom: 5rem;
+    bottom: 20%;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .15));
 
     ul,
@@ -27,6 +27,7 @@
 
         ul li {
             @include flex-center;
+            justify-content: flex-start;
             padding: 0.5rem 0;
         }
     }
@@ -40,5 +41,14 @@
     >nav ul li a {
         padding: 0.5rem;
         border-radius: 0.7rem;
+        justify-content: flex-start;
+
+        span {
+            display: block;
+        }
+    }
+
+    nav ul>li:nth-last-child(2)>a {
+        padding: 0.5rem;
     }
 }

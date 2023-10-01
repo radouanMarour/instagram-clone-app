@@ -1,18 +1,25 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.scss';
 import MakeLink from '../makeLink/MakeLink';
-import { GoHome } from 'react-icons/go';
-import { MdOutlineExplore, MdOutlineAddBox, MdSlowMotionVideo } from 'react-icons/md';
-import { BiSearch } from 'react-icons/bi';
-import { BiSolidUserCircle } from 'react-icons/bi';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { LuSend } from 'react-icons/lu';
+// import { BiSolidUserCircle } from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa';
 import { GrInstagram } from 'react-icons/gr';
 import Search from '../Search/Search';
 import Notifications from '../Notifications/Notifications';
 import MoreModel from '../MoreModel/MoreModel';
 import CreatePost from '../CreatePost/CreatePost';
+import {
+    HomeIcon,
+    SearchIcon,
+    ExploreIcon,
+    // ReelsIcon,
+    SendIcon,
+    CreateIcon,
+    NotifIcon,
+    UserPhoto
+} from '../../icons';
 
 
 function Sidebar() {
@@ -20,6 +27,9 @@ function Sidebar() {
     const [notifOpen, setNotifOpen] = useState(false);
     const [modelOpen, setModelOpen] = useState(false);
     const [createPostOpen, setCreatePostOpen] = useState(false);
+    const user = useSelector(state => state.auth.user)
+    const location = useLocation();
+    const path = location.pathname;
 
     const openSearch = () => {
         setSearchOpen(prev => !prev);
@@ -47,18 +57,66 @@ function Sidebar() {
             </div>
             <nav>
                 <ul>
-                    <li onClick={closeSide}><MakeLink to="/" text="Home" icon={<GoHome />} /></li>
-                    <li onClick={openSearch} ><MakeLink text="Search" icon={<BiSearch />} /></li>
-                    <li onClick={closeSide}><MakeLink to="/explore" text="Explore" icon={<MdOutlineExplore />} /></li>
-                    <li onClick={closeSide}><MakeLink to="/reels" text="Reels" icon={<MdSlowMotionVideo />} /></li>
-                    <li onClick={closeSide}><MakeLink text="Messages" icon={<LuSend />} /></li>
-                    <li onClick={openNotifications}><MakeLink text="Notification" icon={<AiOutlineHeart />} /></li>
-                    <li onClick={openCreatePost}><MakeLink text="Create" icon={<MdOutlineAddBox />} /></li>
-                    <li onClick={closeSide}><MakeLink text="Profile" to="/user-name" icon={<BiSolidUserCircle />} /></li>
-                    <li onClick={openModel}><MakeLink text="More" icon={<FaBars />} /></li>
+                    <li onClick={closeSide}>
+                        <MakeLink
+                            to="/"
+                            text="Home"
+                            icon={<HomeIcon path={path} searchOpen={searchOpen} notifOpen={notifOpen} />}
+                        />
+                    </li>
+                    <li onClick={openSearch} >
+                        <MakeLink
+                            text="Search"
+                            icon={<SearchIcon searchOpen={searchOpen} />}
+                        />
+                    </li>
+                    <li onClick={closeSide}>
+                        <MakeLink
+                            to="/explore"
+                            text="Explore"
+                            icon={<ExploreIcon path={path} searchOpen={searchOpen} notifOpen={notifOpen} />}
+                        />
+                    </li>
+                    {/* <li onClick={closeSide}>
+                        <MakeLink
+                            to="/reels"
+                            text="Reels"
+                            icon={<ReelsIcon path={path} searchOpen={searchOpen} notifOpen={notifOpen} />}
+                        />
+                    </li> */}
+                    <li onClick={closeSide}>
+                        <MakeLink
+                            text="Messages"
+                            icon={<SendIcon messageOpen={false} />}
+                        />
+                    </li>
+                    <li onClick={openNotifications}>
+                        <MakeLink
+                            text="Notification"
+                            icon={<NotifIcon notifOpen={notifOpen} />}
+                        />
+                    </li>
+                    <li onClick={openCreatePost}>
+                        <MakeLink
+                            text="Create"
+                            icon={<CreateIcon createPostOpen={createPostOpen} />}
+                        />
+                    </li>
+                    <li onClick={closeSide}>
+                        <Link to={`/${user.userName}`}>
+                            <UserPhoto profilePhoto={user.profilePhoto} userName={user.userName} />
+                            <span>Profile</span>
+                        </Link>
+                    </li>
+                    <li onClick={openModel}>
+                        <MakeLink
+                            text="More"
+                            icon={<FaBars />}
+                        />
+                    </li>
                 </ul>
             </nav>
-            {searchOpen && <Search />}
+            {searchOpen && <Search setSearchOpen={setSearchOpen} />}
             {notifOpen && <Notifications />}
             {modelOpen && <MoreModel setModelOpen={setModelOpen} />}
             {createPostOpen && <CreatePost closeCreatePost={openCreatePost} />}

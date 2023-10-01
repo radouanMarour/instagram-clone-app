@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignupPage.scss';
 import Logo from '../../images/logo.png';
 import { register } from '../../apis/authApi';
 import { setUser } from '../../redux/slices/authSlice';
+import { LoginSpinner } from '../../icons';
 
 function SignupPage() {
     const [email, setEmail] = useState("");
-    const [fname, setFname] = useState("");
-    const [username, setUsername] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [userName, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [success, setSuccess] = useState("");
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const body = {
             email,
-            fname,
-            username,
+            fullName,
+            userName,
             password,
-            posts: [],
-            followers: [],
-            following: []
+            // bio: "",
+            // posts: [],
+            // followers: [],
+            // following: []
         }
         try {
-            const data = await register(body);
-            setUser(data);
+            setLoading(true)
+            const { data } = await register(body);
+            dispatch(setUser(data));
+            navigate("/");
+            setLoading(false)
         } catch (error) {
-            setError(error)
+            setError(error.response.data.error)
+            setLoading(false)
+            console.log(error);
         }
     }
 
@@ -42,6 +52,11 @@ function SignupPage() {
                     <span>OR</span>
                 </div>
                 <form onSubmit={handleSubmit}>
+                    {error && <input type="submit"
+                        value={error}
+                        disabled
+                        style={{ color: "red", fontSize: "0.7rem" }}
+                    />}
                     <input
                         type="text"
                         value={email}
@@ -50,13 +65,13 @@ function SignupPage() {
                     />
                     <input
                         type="text"
-                        value={fname}
+                        value={fullName}
                         placeholder="Full Name"
-                        onChange={e => setFname(e.target.value)}
+                        onChange={e => setFullName(e.target.value)}
                     />
                     <input
                         type="text"
-                        value={username}
+                        value={userName}
                         placeholder="Username"
                         onChange={e => setUsername(e.target.value)}
                     />
@@ -68,7 +83,7 @@ function SignupPage() {
                     />
                     <p>People who use our service may have uploaded your contact information to Instagram. Learn more</p>
                     <p>By signing up, you agree to our Terms, Privacy Policy and Cookies Policy.</p>
-                    <button type='submit'>Sign Up</button>
+                    <button type='submit'>{loading ? <LoginSpinner /> : "Sign Up"}</button>
                 </form>
             </section>
             <div className='link'>

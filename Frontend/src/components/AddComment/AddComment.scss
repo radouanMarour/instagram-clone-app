@@ -17,11 +17,21 @@ form.add-comment-form {
         border-radius: 0.3rem;
         background-color: $btn-color-2;
         color: #fff;
-        width: 10%;
+        // width: 10%;
         padding: 0.3rem;
+        cursor: pointer;
 
         &:hover {
             background-color: $btn-color-1;
+        }
+
+        &:disabled {
+            background-color: gray;
+        }
+
+        @media (max-width:768px) {
+            width: fit-content;
+            margin-left: -0.5rem;
         }
     }
 }

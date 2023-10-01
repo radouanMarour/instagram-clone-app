@@ -1,23 +1,26 @@
 import React from 'react';
 import './Comment.scss';
-import defaultImg from '../../images/default-user-image.jpg';
-import { AiOutlineHeart } from 'react-icons/ai';
+// import defaultImg from '../../images/default-user-image.jpg';
+// import { AiOutlineHeart } from 'react-icons/ai';
+import { UserPhoto } from '../../icons';
+import { formatDate } from '../../utils';
 
-function Comment() {
+function Comment({ comment }) {
     return (
         <div className='comment'>
-            <img src={defaultImg} alt="" />
-
+            <UserPhoto profilePhoto={comment.user.profilePhoto} userName={comment.user.userName} />
             <p className='caption-text'>
-                <span className='username'>username </span>
-                this is just a simple text comment this is just a simple text comment this is just a simple text comment
+                <span className='username'>{comment.user.userName} </span>
+                {comment.text}
                 <br />
-                <span className='created-at'>2d </span>
-                <span className='likes'> 27 Likes</span>
+                <span className='created-at'>
+                    {formatDate(comment.createdAt)}
+                </span>
+                {/* <span className='likes'> 27 Likes</span> */}
             </p>
-            <span>
+            {/* <span>
                 <AiOutlineHeart />
-            </span>
+            </span> */}
         </div>
     )
 }

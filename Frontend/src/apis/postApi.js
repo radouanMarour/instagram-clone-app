@@ -1,62 +1,58 @@
 import api from '../client';
 
-export const createPost = async (data) => {
-    try {
-        const response = await api.post('create/post', data, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        return response.data;
-    } catch (error) {
-        throw error.response.data.message;
-    }
+export const createPost = async (token, data) => {
+    return await api.post('/posts', data, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
 }
 
-export const editPost = async (data) => {
-    try {
-        const response = await api.put("posts/postId", data, {
-            headers: {
-                'Content-Type': 'application/json',
-                // Authorization: `Bearer ${token}`
-            }
-        });
-        return response.data;
-    } catch (error) {
-        throw error.response.data.message;
-    }
+export const editPost = async (data, postId, token) => {
+    return await api.put(`/posts/${postId}`, data, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
 }
 
-export const deletePost = async () => {
-    try {
-        const response = await api.delete("posts/postId", {
-            headers: {
-                'Content-Type': 'application/json',
-                // Authorization: `Bearer ${token}`
-            }
-        });
-        return response.data;
-    } catch (error) {
-        throw error.response.data.message;
-    }
-}
-
-export const getPosts = async () => {
-    try {
-        const response = await api.get("posts/");
-        return response.data;
-    } catch (error) {
-        throw error.response.data.message;
-    }
+export const deletePost = async (postId, token) => {
+    return await api.delete(`/posts/${postId}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
 }
 
 export const getPost = async (postId) => {
-    try {
-        const response = await api.get("posts/postId");
-        return response.data;
-    } catch (error) {
-        throw error.response.data.message;
-    }
+    return await api.get(`/posts/${postId}`);
+}
+export const likePost = async (token, postId) => {
+    return await api.put(`/posts/${postId}/like`, {}, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+}
+export const savePost = async (token, postId) => {
+    return await api.post(`/posts/${postId}/save`, {}, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+}
+export const commentPost = async (token, postId, text) => {
+    return await api.post(`/posts/${postId}/comment`, { text }, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
 }
 
 

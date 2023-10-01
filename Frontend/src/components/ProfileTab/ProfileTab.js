@@ -1,40 +1,34 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './ProfileTab.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { BsGrid3X3 } from 'react-icons/bs'
-import { MdSlowMotionVideo, MdOutlinePermContactCalendar } from 'react-icons/md';
+import { MdBookmarkBorder } from 'react-icons/md';
 import PostGrid from '../PostGrid/PostGrid';
+import SavedPostsGrid from '../SavedPostsGrid/SavedPostsGrid';
 
-function ProfileTab() {
+function ProfileTab({ user }) {
     const location = useLocation();
-
 
     return (
         <div className='profile-tab'>
             <div className='profile-tab-links'>
                 <Link
-                    to="/user-name"
-                    className={location.pathname === "/user-name" ? "active-tab" : ""}
+                    to={`/${user.userName}`}
+                    className={location.pathname === `/${user.userName}` ? "active-tab" : ""}
                 >
                     <BsGrid3X3 /><span>POSTS</span>
                 </Link>
                 <Link
-                    to="/user-name/reels"
-                    className={location.pathname === "/user-name/reels" ? "active-tab" : ""}
+                    to={`/${user.userName}/saved`}
+                    className={location.pathname === `/${user.userName}/saved` ? "active-tab" : ""}
                 >
-                    <MdSlowMotionVideo /><span>REELS</span>
-                </Link>
-                <Link
-                    to="/user-name/tagged"
-                    className={location.pathname === "/user-name/tagged" ? "active-tab" : ""}
-                >
-                    <MdOutlinePermContactCalendar /><span>TAGGED</span>
+                    <MdBookmarkBorder /><span>SAVED</span>
                 </Link>
             </div>
             <div className='profile-tab-content'>
-                {location.pathname === "/user-name" && <PostGrid />}
-                {location.pathname === "/user-name/reels" && <div>Reels</div>}
-                {location.pathname === "/user-name/tagged" && <div>Tagged</div>}
+                {location.pathname === `/${user.userName}` && <PostGrid userId={user._id} />}
+                {location.pathname === `/${user.userName}/saved` && <SavedPostsGrid userId={user._id} />}
             </div>
         </div>
     )

@@ -6,12 +6,41 @@
     height: 100%;
 
     .post-photo {
-        width: 50%;
+        width: 60%;
         height: 100%;
     }
 
     .post-caption {
-        width: 50%;
+        width: 40%;
         height: 100%;
+        @include flex-center;
+        flex-direction: column;
+        align-items: flex-start;
+        // justify-content: flex-start;
+
+        .user-post {
+            // width: 100%;
+            @include flex-center;
+            justify-content: flex-start;
+            gap: 1rem;
+            padding: 0 0.5rem;
+
+            img {
+                width: 32px;
+                height: 32px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+        textarea {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: 0.5rem;
+            font-family: inherit;
+            font-size: 1.05rem;
+        }
     }
 }

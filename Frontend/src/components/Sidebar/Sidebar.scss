@@ -12,6 +12,7 @@
     left: 0;
     border: 1px solid $border-color;
     padding: 2rem 1rem 1rem 1rem;
+    transition: all 0.3s ease;
 
     img {
         margin: 0;
@@ -64,6 +65,24 @@
             top: 3rem;
         }
 
+        ul>li:nth-last-child(2)>a {
+            @include flex-center;
+            justify-content: flex-start;
+            text-decoration: none;
+            color: $text-color-2;
+            font-size: 1.2rem;
+            border: none;
+            padding: 0rem 0.5rem;
+
+            >a {
+                width: initial;
+            }
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+        }
+
     }
 }
 
@@ -92,7 +111,7 @@
         margin: 0;
     }
 
-    nav ul li a span {
+    >nav ul li a span {
         display: none;
     }
 }

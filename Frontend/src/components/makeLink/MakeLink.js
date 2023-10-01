@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './MakeLink.scss';
 
 function MakeLink({ to, text, icon }) {
     const Icon = icon;
-    const path = useLocation().pathname;
     return (
-        <Link to={to} className={path === to ? "link active" : "link"}>
+        <Link to={to} className="link">
             {icon}
             <span>{text}</span>
         </Link>

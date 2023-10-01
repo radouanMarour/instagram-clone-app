@@ -1,41 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import api from '../../client';
+
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+    try {
+        const response = await api.get("/posts");
+        return response.data.posts;
+    } catch (error) {
+        console.log(error.message);
+    }
+})
 
 const postSlice = createSlice({
     name: "post",
     initialState: {
-        posts: []
+        posts: [],
+        status: 'idle',
+        error: null
     },
-    reducers: {
-        setPosts: (state, action) => {
-            state.posts = action.payload;
-        },
-        addPost: (state, action) => {
-            state.posts.push(action.payload)
-        },
-        like: (state, action) => {
-            const post = state.posts.find(p => p.id === action.payload.postId);
-            const userId = post.likes.find(uId => uId === action.payload.userId);
-            if (userId) {
-                const newLikes = post.likes.filter(uId => uId !== action.payload.userId);
-                post.likes = newLikes;
-                const newPosts = state.posts.filter(pId => pId !== post.id);
-                newPosts.push(post);
-                state.posts = newPosts;
-            }
-            post.likes.push(action.payload.userId);
-            const newPosts = state.posts.filter(pId => pId !== post.id);
-            newPosts.push(post);
-            state.posts = newPosts;
-        },
-        comment: (state, action) => {
-            const post = state.posts.find(p => p.id === action.payload.postId);
-            post.comments.push(action.payload.comment);
-            const newPosts = state.posts.filter(pId => pId !== post.id);
-            newPosts.push(post);
-            state.posts = newPosts;
-        }
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchPosts.pending, (state) => {
+                state.status = 'loading'
+            })
+            .addCase(fetchPosts.fulfilled, (state, action) => {
+                state.posts = action.payload;
+                state.status = 'succeeded';
+            })
+            .addCase(fetchPosts.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
     }
 })
 
-export const { setPosts, addPost, like, comment } = postSlice.actions;
 export default postSlice.reducer;

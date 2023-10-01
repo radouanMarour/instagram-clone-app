@@ -25,5 +25,18 @@
         width: 100%;
         border-top: 1px solid $border-color;
         height: 100%;
+
+        .result {
+            width: 100%;
+            @include flex-center;
+            justify-content: flex-start;
+            gap: 0.5rem;
+            margin: 0.3rem 0;
+            padding: 0.5rem;
+
+            a {
+                width: initial;
+            }
+        }
     }
 }

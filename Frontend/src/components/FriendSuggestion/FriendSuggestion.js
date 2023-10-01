@@ -1,17 +1,21 @@
 import React from 'react';
 import './FriendSuggestion.scss';
-import defaultImg from '../../images/default-user-image.jpg';
+// import defaultImg from '../../images/default-user-image.jpg';
 import { Link } from 'react-router-dom';
 import FollowButton from '../FollowButton/FollowButton';
+import { UserPhoto } from '../../icons';
 
-function FriendSuggestion() {
+function FriendSuggestion({ user }) {
     return (
         <div className='friend-suggestion'>
             <div className='friend'>
-                <Link to="user-name"><img src={defaultImg} alt="" /></Link>
-                <p>Username <br /><span>name</span></p>
+                <UserPhoto profilePhoto={user.profilePhoto} userName={user.userName} />
+                <p>{user.userName} <br /><span>{user.fullName}</span></p>
             </div>
-            <FollowButton />
+            <FollowButton
+                userFollowers={user.followers}
+                userId={user._id}
+            />
         </div>
     )
 }

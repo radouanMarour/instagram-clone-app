@@ -8,7 +8,9 @@
 
     img {
         width: 100%;
-        object-fit: cover;
+        max-width: 500px;
+        height: 350px;
+        object-fit: contain;
     }
 
     .caption {
@@ -16,6 +18,14 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+
+        &+button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: $text-color-3;
+            cursor: pointer;
+        }
     }
 
     a {
@@ -41,7 +51,7 @@
         border: none;
         outline: none;
         cursor: pointer;
-        font-size: 2rem;
+        font-size: 1.5rem;
 
         &:hover {
             color: $text-color-3;
