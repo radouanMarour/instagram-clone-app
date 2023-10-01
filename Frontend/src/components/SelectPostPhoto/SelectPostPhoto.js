@@ -10,7 +10,7 @@ function SelectPostPhoto({ shwoDispalyPhoto }) {
     const handleChange = e => {
         const formData = new FormData();
         formData.append('photo', e.target.files[0]);
-        api.post("/uploads", formData)
+        api.post("/api/uploads", formData)
             .then(response => {
                 dispatch(addImage(response.data.photo));
                 shwoDispalyPhoto();
