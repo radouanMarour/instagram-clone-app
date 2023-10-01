@@ -3,7 +3,7 @@ import api from '../../client';
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     try {
-        const response = await api.get("/posts");
+        const response = await api.get("/api/posts");
         return response.data.posts;
     } catch (error) {
         console.log(error.message);
