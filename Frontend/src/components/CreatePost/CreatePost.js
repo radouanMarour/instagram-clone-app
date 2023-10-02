@@ -10,7 +10,7 @@ import { fetchPosts } from '../../redux/slices/postSlice';
 import { LoginSpinner } from '../../icons';
 import { useNavigate } from 'react-router-dom';
 
-function CreatePost({ closeCreatePost }) {
+function CreatePost({ openCreatePost }) {
     const [selectPhoto, setSelectPhoto] = useState(true);
     const [displayPhoto, setDisplayPhoto] = useState(false);
     const [createCaption, setCreateCaption] = useState(false);
@@ -35,12 +35,10 @@ function CreatePost({ closeCreatePost }) {
             setLoading(true)
             const { data } = await createPost(token, postInfo);
             if (data) {
-                dispatch(fetchPosts());
-                navigate('/')
                 setLoading(false)
-
+                dispatch(fetchPosts());
             }
-            closeCreatePost();
+            openCreatePost();
         } catch (error) {
             console.log(error);
             setLoading(false)

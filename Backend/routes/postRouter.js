@@ -69,7 +69,7 @@ router.get('/', async (req, res) => {
     try {
         const posts = await Post.find({})
             .populate('user', 'profilePhoto userName fullName followers')
-            .sort({ createdAt: 1 });
+            .sort({ createdAt: -1 });
         if (!posts) {
             res.status(400).json({ error: "No posts found" })
         }
