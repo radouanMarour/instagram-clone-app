@@ -40,9 +40,6 @@ function Sidebar() {
     const openModel = () => {
         setModelOpen(prev => !prev);
     }
-    const openCreatePost = () => {
-        setCreatePostOpen(prev => !prev);
-    }
 
     const closeSide = () => {
         setSearchOpen(false);
@@ -96,7 +93,7 @@ function Sidebar() {
                             icon={<NotifIcon notifOpen={notifOpen} />}
                         />
                     </li>
-                    <li onClick={openCreatePost}>
+                    <li onClick={() => setCreatePostOpen(prev => !prev)}>
                         <MakeLink
                             text="Create"
                             icon={<CreateIcon createPostOpen={createPostOpen} />}
@@ -119,7 +116,7 @@ function Sidebar() {
             {searchOpen && <Search setSearchOpen={setSearchOpen} />}
             {notifOpen && <Notifications />}
             {modelOpen && <MoreModel setModelOpen={setModelOpen} />}
-            {createPostOpen && <CreatePost closeCreatePost={openCreatePost} />}
+            {createPostOpen && <CreatePost setCreatePostOpen={setCreatePostOpen} />}
         </div>
     )
 }

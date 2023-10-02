@@ -10,7 +10,7 @@ import { fetchPosts } from '../../redux/slices/postSlice';
 import { LoginSpinner } from '../../icons';
 import { useNavigate } from 'react-router-dom';
 
-function CreatePost({ openCreatePost }) {
+function CreatePost({ setCreatePostOpen }) {
     const [selectPhoto, setSelectPhoto] = useState(true);
     const [displayPhoto, setDisplayPhoto] = useState(false);
     const [createCaption, setCreateCaption] = useState(false);
@@ -37,8 +37,10 @@ function CreatePost({ openCreatePost }) {
             if (data) {
                 setLoading(false)
                 dispatch(fetchPosts());
+                setCreatePostOpen(prev => !prev);
+                // navigate('/')
+
             }
-            openCreatePost();
         } catch (error) {
             console.log(error);
             setLoading(false)
@@ -48,7 +50,7 @@ function CreatePost({ openCreatePost }) {
 
     return (
         <div className='create-post-wrapper'>
-            <GrFormClose onClick={closeCreatePost} />
+            <GrFormClose onClick={() => setCreatePostOpen(prev => !prev)} />
             <div className='create-post-content' style={{ maxWidth: maxWidth }}>
                 <div className='create-post-content-header'>
                     <p>Create new post</p>
