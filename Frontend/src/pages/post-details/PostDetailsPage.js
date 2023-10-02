@@ -37,7 +37,7 @@ function PostDetailsPage() {
         <div className='post-details'>
             <Link to="/" className='close-icon'><GrFormClose /></Link>
             <div className='post-details-content'>
-                <img className='post-img' src={`https://insta-clone-dxtn.onrender.com/${post?.image}`} />
+                <img className='post-img' src={`https://insta-clone-dxtn.onrender.com/uploads/${post?.image}`} />
                 <div className='post-info'>
                     <div className='post-info-header'>
                         <div className='post-info-user'>
