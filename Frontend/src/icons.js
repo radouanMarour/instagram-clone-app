@@ -42,7 +42,7 @@ export const NotifIcon = ({ notifOpen }) => {
 }
 export const UserPhoto = ({ profilePhoto, userName, width, height }) => {
     return <Link to={`/${userName}`} >{profilePhoto ? <img
-        src={`https://insta-clone-dxtn.onrender.com/uploads/${profilePhoto}`}
+        src={profilePhoto}
         alt=""
         width={width || 40}
         height={height || 40}
