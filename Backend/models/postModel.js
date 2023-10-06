@@ -40,12 +40,9 @@ const postSchema = new Schema({
             }
         }
     ],
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    }
 },
     {
+        timestamps: true,
         toJSON: { virtuals: true }, // Include virtual properties in JSON output
         toObject: { virtuals: true }, // Include virtual properties in object output
     }
