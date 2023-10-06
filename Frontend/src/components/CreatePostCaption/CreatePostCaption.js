@@ -20,7 +20,7 @@ function CreatePostCaption() {
     return (
         <div className='create-post-caption'>
             <div className='post-photo'>
-                <img src={`https://insta-clone-dxtn.onrender.com/uploads/${postImage}`} alt='' />
+                <img src={`${postImage}`} alt='' />
             </div>
             <div className='post-caption'>
                 <div className='user-post'>
