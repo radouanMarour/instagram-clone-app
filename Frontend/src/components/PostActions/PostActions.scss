@@ -1,29 +1,65 @@
 @import '../../globale.scss';
 
+// Variables
+$icon-size: 1.5rem;
+$transition-speed: 0.2s;
+
 .post-actions {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.75rem 0.5rem;
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.05),
+            transparent);
 
     .actions {
         width: 100%;
         @include flex-center;
         justify-content: flex-start;
-        gap: 0.7rem;
-        padding-top: 1rem;
+        gap: 1rem;
+        padding: 0.5rem 0;
 
-        span svg {
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+        span {
+            position: relative;
 
-        span svg:hover {
-            color: $text-color-3;
-        }
+            svg {
+                font-size: $icon-size;
+                cursor: pointer;
+                transition: all $transition-speed ease;
 
-        span:nth-child(3) {
-            margin-right: auto;
+                &:hover {
+                    color: $text-color-3;
+                    transform: scale(1.15);
+                }
+            }
+
+            &:nth-child(1) svg:hover {
+                color: #e31b23;
+                transform: scale(1.2) rotate(-8deg);
+            }
+
+            &:nth-child(2) svg:hover {
+                transform: scale(1.15) rotate(8deg);
+            }
+
+            &:nth-child(3) {
+                margin-right: auto;
+
+                svg:hover {
+                    transform: scale(1.15) translateY(-2px);
+                }
+            }
+
+            &:nth-child(4) svg:hover {
+                transform: scale(1.15) rotate(-8deg);
+            }
         }
+    }
+
+    &:hover {
+        background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0.08),
+                transparent);
     }
 }

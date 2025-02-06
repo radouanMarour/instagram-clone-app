@@ -1,4 +1,4 @@
-@import './globale.scss';
+@use './globale' as *; // Import everything from globale.scss
 
 *,
 *::after,

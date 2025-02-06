@@ -25,7 +25,7 @@ function FeedPage() {
         dispatch(fetchPosts());
         dispatch(fetchUsers());
     }, [])
-
+    console.log(posts)
     const myUsers = users.filter(usr => usr._id !== user.id).splice(0, 5);
 
     return (

@@ -15,6 +15,7 @@ function SelectPostPhoto({ shwoDispalyPhoto }) {
         setUploading(true)
         api.post("/api/uploads", formData)
             .then(response => {
+                console.log(response.data.photo)
                 dispatch(addImage(response.data.photo));
                 setUploading(false)
                 shwoDispalyPhoto();

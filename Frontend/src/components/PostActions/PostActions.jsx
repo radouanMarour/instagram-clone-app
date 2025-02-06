@@ -11,8 +11,8 @@ import { setUser } from '../../redux/slices/authSlice';
 
 function PostActions({ postId, likes, userId, setUpdate }) {
     const { user, token } = useSelector(state => state.auth);
-    const isLiked = likes.includes(user.id);
-    const isSaved = user.saved.includes(postId);
+    const isLiked = likes.length > 0 && likes.includes(user.id);
+    const isSaved = user?.saved?.includes(postId);
     const dispatch = useDispatch();
 
     const handleLike = async () => {

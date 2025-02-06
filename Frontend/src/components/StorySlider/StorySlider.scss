@@ -1,62 +1,106 @@
 @import '../../globale.scss';
 
+// Variables
+$story-size: 65px;
+$story-border-size: 2px;
+$story-border-color: linear-gradient(45deg, #ff0367, #ff7b54);
+$arrow-size: 2rem;
+$transition-speed: 0.3s;
+
 .slick-disabled {
     opacity: 0;
+    transition: opacity $transition-speed ease;
+}
+
+.slick-arrow {
+    width: $arrow-size;
+    height: $arrow-size;
+    transition: transform $transition-speed ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &::before {
+        font-size: $arrow-size;
+        color: #8b3434;
+        opacity: 1;
+        border-radius: 50%;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 }
 
 .slick-prev {
     left: 0.5rem;
     z-index: 999;
-
-    &::before {
-        font-size: 2rem;
-        color: #8b3434;
-        opacity: 1;
-        border-radius: 50%;
-        /* display: flex; */
-        padding-top: 0.1rem;
-    }
 }
 
 .slick-next {
     right: 0.5rem;
     z-index: 999;
-
-    &::before {
-        font-size: 2rem;
-        color: #8b3434;
-        opacity: 1;
-        border-radius: 50%;
-        /* display: flex; */
-        padding-top: 0.1rem;
-    }
 }
 
 .story-slider {
     @include flex-center;
     width: 100%;
     max-width: 600px;
+    padding: 0.5rem 0;
 
     .story {
         display: flex !important;
         justify-content: center;
         align-items: center;
-        width: 65px !important;
-        height: 65px;
+        width: $story-size !important;
+        height: $story-size;
         border-radius: 50%;
-        border: 2px solid #ff0367;
-        // padding: 0.3rem;
-        // margin: 0 0.5rem;
-        flex-shrink: 0;
+        position: relative;
+        cursor: pointer;
+        transition: transform $transition-speed ease;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -$story-border-size;
+            left: -$story-border-size;
+            right: -$story-border-size;
+            bottom: -$story-border-size;
+            border-radius: 50%;
+            background: $story-border-color;
+            z-index: 0;
+            animation: rotate 4s linear infinite;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+        }
 
         >a {
-            margin: 0 0.2rem;
+            position: relative;
+            padding: 2px;
+            background: white;
+            border-radius: 50%;
+            z-index: 1;
 
             img {
-                width: 56px;
-                height: 56px;
+                width: calc($story-size - 9px);
+                height: calc($story-size - 9px);
                 border-radius: 50%;
+                transition: filter $transition-speed ease;
+
+                &:hover {
+                    filter: brightness(1.1);
+                }
             }
         }
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

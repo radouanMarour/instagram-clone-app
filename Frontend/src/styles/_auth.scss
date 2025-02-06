@@ -1,0 +1,59 @@
+// Auth shared variables
+$auth-container-width: 350px;
+$auth-border-color: rgb(219, 219, 219);
+$auth-transition: 0.3s ease;
+$auth-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+
+// Auth shared mixins
+@mixin auth-container {
+    @include flex-center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 95%;
+    max-width: $auth-container-width;
+    border: 1px solid $auth-border-color;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: $auth-box-shadow;
+    animation: slideUp 0.4s ease;
+}
+
+@mixin auth-input {
+    width: 100%;
+    border: 1px solid $auth-border-color;
+    margin: 0.3rem 0;
+    padding: 0.8rem 0.7rem;
+    border-radius: 0.3rem;
+    transition: border-color $auth-transition;
+
+    &:focus {
+        border-color: $text-color-3;
+        outline: none;
+    }
+}
+
+@mixin auth-button {
+    width: 100%;
+    padding: 0.8rem !important;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all $auth-transition;
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

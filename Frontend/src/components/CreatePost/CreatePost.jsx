@@ -37,7 +37,7 @@ function CreatePost({ setCreatePostOpen }) {
             if (data) {
                 setLoading(false)
                 dispatch(fetchPosts());
-                setCreatePostOpen(prev => !prev);
+                setCreatePostOpen(false);
                 // navigate('/')
 
             }
@@ -50,7 +50,7 @@ function CreatePost({ setCreatePostOpen }) {
 
     return (
         <div className='create-post-wrapper'>
-            <GrFormClose onClick={() => setCreatePostOpen(prev => !prev)} />
+            <GrFormClose onClick={() => setCreatePostOpen(false)} />
             <div className='create-post-content' style={{ maxWidth: maxWidth }}>
                 <div className='create-post-content-header'>
                     <p>Create new post</p>

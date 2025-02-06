@@ -48,13 +48,13 @@ function MobileHeader() {
                                     width={45}
                                     height={45}
                                     fontSize={"3rem"}
-                                    profilePhoto={user.profilePhoto}
-                                    userName={user.userName}
+                                    profilePhoto={user?.profilePhoto}
+                                    userName={user?.userName}
                                 />
                                 <p>
-                                    <strong>{user.userName}</strong>
+                                    <strong>{user?.userName}</strong>
                                     <br />
-                                    {user.fullName} . {user.followers.length} followers
+                                    {user?.fullName} . {user?.followers.length} followers
                                 </p>
                             </div>
                         ))

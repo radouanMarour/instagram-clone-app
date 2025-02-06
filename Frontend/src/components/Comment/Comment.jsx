@@ -8,9 +8,9 @@ import { formatDate } from '../../utils';
 function Comment({ comment }) {
     return (
         <div className='comment'>
-            <UserPhoto profilePhoto={comment.user.profilePhoto} userName={comment.user.userName} />
+            <UserPhoto profilePhoto={comment.user?.profilePhoto} userName={comment.user?.userName} />
             <p className='caption-text'>
-                <span className='username'>{comment.user.userName} </span>
+                <span className='username'>{comment.user?.userName} </span>
                 {comment.text}
                 <br />
                 <span className='created-at'>

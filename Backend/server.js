@@ -11,7 +11,7 @@ import postRouter from './routes/postRouter.js';
 import notificationRouter from './routes/notificationRouter.js';
 import uploadRouter from './routes/uploadRouter.js';
 
-const mongodbUrl = config.MONGODB_URL;
+const mongodbUrl = config.MONGODB_URI;
 
 mongoose.connect(mongodbUrl)
     .then(() => console.log("database connected successfuly"))
