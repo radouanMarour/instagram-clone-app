@@ -12,13 +12,17 @@ import notificationRouter from './routes/notificationRouter.js';
 import uploadRouter from './routes/uploadRouter.js';
 
 const mongodbUrl = config.MONGODB_URI;
+const originUrl = config.ORIGIN_URL;
 
 mongoose.connect(mongodbUrl)
     .then(() => console.log("database connected successfuly"))
     .catch(error => console.log(error.reason))
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: process.env.ORIGIN_URL || "http://localhost:5173",
+    credentials: true
+}));
 app.use(bodyParser.json());
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
@@ -27,14 +31,6 @@ app.use('/api/notifications', notificationRouter);
 app.use('/api/uploads', uploadRouter);
 app.use('/uploads', express.static('./uploads'));
 
-if (config.NODE_ENV === "production") {
-    app.use(express.static("../Frontend/build"));
 
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    app.get("*", (req, res) => {
-        res.sendFile(resolve(__dirname, "../Frontend", "build", "index.html"));
-    })
-}
 
 app.listen(config.PORT, () => console.log(`Server started at http://localhost:${config.PORT}`));
