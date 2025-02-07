@@ -120,6 +120,9 @@ $ npm run dev
 ### Login Page
 ![Login Page](screenshots/login.png)
 
+## App URL
+[Live Demo](https://instagram-clone-app-frontend.onrender.com/)
+
 
 ## License
 
